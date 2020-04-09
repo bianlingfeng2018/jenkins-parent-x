@@ -72,6 +72,10 @@ THE SOFTWARE.
       Message to use for confirmation, if requested; defaults to title.
       (since 1.512)
     </st:attribute>
+    <st:attribute name="outer">
+      Whether jump out of iframe via href attribute.
+      (bianlingfeng)
+    </st:attribute>
   </st:documentation>
 
   <!--
@@ -179,7 +183,8 @@ THE SOFTWARE.
               </l:confirmationLink>
             </j:when>
             <j:otherwise>
-              <a href="${href}" class="task-icon-link" onclick="${attrs.onclick ?: (post ? 'return postRequest_' + id + '(this)' : null)}">
+              <a href="${href}" class="task-icon-link" onclick="${attrs.onclick ?: (post ? 'return postRequest_' + id + '(this)' : null)}"
+                 target="${outer ? '_parent' : null}">
                 <j:choose>
                   <j:when test="${iconMetadata != null}">
                     <l:icon class="${iconMetadata.classSpec}" style="width: 24px; height: 24px; margin: 2px;" />
@@ -207,7 +212,8 @@ THE SOFTWARE.
               </l:confirmationLink>
             </j:when>
             <j:otherwise>
-              <a href="${href}" class="task-link" onclick="${attrs.onclick ?: (post ? 'return postRequest_' + id + '(this)' : null)}" title="${title}">
+              <a href="${href}" class="task-link" onclick="${attrs.onclick ?: (post ? 'return postRequest_' + id + '(this)' : null)}" title="${title}"
+                 target="${outer ? '_parent' : null}">
                 <j:choose>
                   <j:when test="${match}">
                     <b>${title}</b>
