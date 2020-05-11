@@ -42,7 +42,7 @@ THE SOFTWARE.
 <!--        &lt;!&ndash; made overridable for ViewGroup that doesn't allow modifications &ndash;&gt;-->
 <!--        <l:task href="${rootURL}/${it.viewUrl}newJob" icon="icon-new-package icon-md" it="${app}" permission="${it.itemCreatePermission}" title="${%NewJob(it.newPronoun)}"/>-->
 <!--      </st:include>-->
-        <l:task href="http://fjkj.tpddns.cn:5000/dashboard/ui" icon="icon-new-package icon-md" title="${%NewJob(it.newPronoun)}" outer="true"/>
+        <l:task href="${rootURL}/userContent/build/default/index.html" icon="icon-new-package icon-md" title="${%NewJob(it.newPronoun)}" outer="false"/>
 
 <!--      <j:choose>-->
 <!--        <j:when test="${it.class.name=='hudson.model.AllView'}">-->
