@@ -358,16 +358,16 @@ public final class DirectoryBrowserSupport implements HttpResponse {
                 // redirect to second domain
                 rsp.sendRedirect(302, ResourceDomainRootAction.get().getRedirectUrl(resourceToken, req.getRestOfPath()));
             } else {
-                if (!ResourceDomainConfiguration.isResourceRequest(req)) {
-                    // if we're serving this from the main domain, set CSP headers
-                    String csp = SystemProperties.getString(CSP_PROPERTY_NAME, DEFAULT_CSP_VALUE);
-                    if (!csp.trim().equals("")) {
-                        // allow users to prevent sending this header by setting empty system property
-                        for (String header : new String[]{"Content-Security-Policy", "X-WebKit-CSP", "X-Content-Security-Policy"}) {
-                            rsp.setHeader(header, csp);
-                        }
-                    }
-                }
+//                if (!ResourceDomainConfiguration.isResourceRequest(req)) {
+//                    // if we're serving this from the main domain, set CSP headers
+//                    String csp = SystemProperties.getString(CSP_PROPERTY_NAME, DEFAULT_CSP_VALUE);
+//                    if (!csp.trim().equals("")) {
+//                        // allow users to prevent sending this header by setting empty system property
+//                        for (String header : new String[]{"Content-Security-Policy", "X-WebKit-CSP", "X-Content-Security-Policy"}) {
+//                            rsp.setHeader(header, csp);
+//                        }
+//                    }
+//                }
                 rsp.serveFile(req, in, lastModified, -1, length, baseFile.getName());
             }
         }
@@ -781,5 +781,5 @@ public final class DirectoryBrowserSupport implements HttpResponse {
     private static final Logger LOGGER = Logger.getLogger(DirectoryBrowserSupport.class.getName());
 
     @Restricted(NoExternalUse.class)
-    public static final String DEFAULT_CSP_VALUE = "sandbox; default-src 'none'; img-src 'self'; style-src 'self';";
+    public static final String DEFAULT_CSP_VALUE = "";
 }
